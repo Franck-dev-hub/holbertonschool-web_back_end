@@ -4,9 +4,10 @@
 """
 import asyncio
 from random import uniform
+from typing import AsyncGenerator
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     """
     async generator function
     """
