@@ -1,0 +1,12 @@
+# Ignore all
+*
+
+# Un-ignore
+!*/
+!*.py
+!*.js
+!.gitignore
+!README.md
+
+# Specifically ignore files
+*main*.py
