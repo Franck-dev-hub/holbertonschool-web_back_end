@@ -3,7 +3,7 @@
 5-sum_list.py
 """
 
-def sum_list(input_list: list) -> float:
+def sum_list(input_list: List[float]) -> float:
     """
     sum-list function
     """
