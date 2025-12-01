@@ -51,14 +51,10 @@ class Server:
         data: List[List] = []
         next_index = index
 
-        # index asserts
-        assert index is None
-        assert isinstance(index, int)
-        assert 0 <= index < len(dataset)
+        assert index is None or (
+                type(index) is int and 0 <= index < len(dataset))
 
-        # page_size asserts
-        assert isinstance(page_size, int)
-        assert pages_size > 0
+        assert type(page_size) is int and page_size > 0
 
         # Fill pages with next item
         while len(data) < page_size and next_index in dataset:
