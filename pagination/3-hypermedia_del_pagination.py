@@ -42,7 +42,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self,
-                        index: int = 0,
+                        index: int = None,
                         page_size: int = 10) -> Dict[str, object]:
         """
         get hyper index function
@@ -53,20 +53,16 @@ class Server:
 
         assert index is None or (
                 type(index) is int and 0 <= index < len(dataset))
-
         assert type(page_size) is int and page_size > 0
 
-        # Fill pages with next item
         while len(data) < page_size and next_index in dataset:
             item = dataset[next_index]
             data.append(item)
             next_index += 1
 
-        result = {
+        return {
                 "index": index,
                 "next_index": next_index,
                 "page_size": page_size,
                 "data": data
                 }
-
-        return result
