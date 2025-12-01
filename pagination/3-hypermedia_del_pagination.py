@@ -62,9 +62,11 @@ class Server:
             data.append(item)
             next_index += 1
 
-        return {
+        result = {
                 "index": index,
                 "next_index": next_index,
                 "page_size": page_size,
                 "data": data
                 }
+
+        return result
