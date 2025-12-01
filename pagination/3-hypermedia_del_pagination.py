@@ -47,26 +47,24 @@ class Server:
         """
         get hyper index function
         """
-        dataset = self.dataset()
-        indexed = self.indexed_dataset()
-        assert index < len(dataset)
-
+        dataset = self.indexed_dataset()
         data: List[List] = []
-        current_index = index
-        found = 0
+        next_index = index
 
-        while found < page_size and current_index < len(indexed):
-            if current_index in indexed:
-                data.append(indexed[current_index])
-                found += 1
-            current_index += 1
+        # index asserts
+        assert index is None
+        assert isinstance(index, int)
+        assert 0 <= index < len(dataset)
 
-        next_index = None
-        while current_index < len(indexed):
-            if current_index in indexed:
-                next_index = current_index
-                break
-            current_index += 1
+        # page_size asserts
+        assert isinstance(page_size, int)
+        assert pages_size > 0
+
+        # Fill pages with next item
+        while len(data) < page_size and next_index in dataset:
+            item = dataset[next_index]
+            data.append(item)
+            next_index += 1
 
         return {
                 "index": index,
