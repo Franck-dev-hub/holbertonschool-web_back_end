@@ -13,7 +13,7 @@ class Server:
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.__dataset = None
         self.__indexed_dataset = None
 
@@ -47,21 +47,26 @@ class Server:
         """
         get hyper index function
         """
-        indexed_dataset = self.indexed_dataset()
-        assert 0 <= index <= len(indexed_dataset)
+        dataset = self.dataset()
+        indexed = self.indexed_dataset()
+        assert index < len(dataset)
 
         data: List[List] = []
         current_index = index
+        found = 0
 
-        while len(data) < page_size and current_index < len(indexed_dataset):
-            if current_index in indexed_dataset:
-                data.append(indexed_dataset[current_index])
+        while found < page_size and current_index < len(indexed):
+            if current_index in indexed:
+                data.append(indexed[current_index])
+                found += 1
             current_index += 1
 
-        if current_index < len(indexed_dataset):
-            next_index = current_index
-        else:
-            next_index = None
+        next_index = None
+        while current_index < len(indexed):
+            if current_index in indexed:
+                next_index = current_index
+                break
+            current_index += 1
 
         return {
                 "index": index,
