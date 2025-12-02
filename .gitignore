@@ -7,6 +7,7 @@
 !*.js
 !.gitignore
 !README.md
+!NoSQL/*
 
 # Specifically ignore files
 *main*.py
