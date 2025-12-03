@@ -69,19 +69,13 @@ Optimized for full-text search and complex queries. Examples: Elasticsearch, Sol
 - Best for: Full-text search, logging, analytics dashboards
 
 ## Benefits of NoSQL Databases
-**Scalability**: Designed for horizontal scaling across distributed systems, making them suitable for handling massive amounts of data.
-
-**Flexibility**: Schema-less design allows data structures to evolve without migrations, accommodating changing requirements.
-
-**Performance**: Optimized for specific access patterns, often providing faster read/write operations for particular use cases.
-
-**High Availability**: Built-in replication and fault tolerance ensure data availability even if some nodes fail.
-
-**Developer-Friendly**: Data models often align naturally with programming languages (JSON documents match object structures).
-
-**Cost-Effective**: Can run on commodity hardware and distribute load across multiple servers efficiently.
-
-**Variety of Models**: Different types serve different needs—choose the model that best fits your use case.
+- **Scalability**: Designed for horizontal scaling across distributed systems, making them suitable for handling massive amounts of data.
+- **Flexibility**: Schema-less design allows data structures to evolve without migrations, accommodating changing requirements.
+- **Performance**: Optimized for specific access patterns, often providing faster read/write operations for particular use cases.
+- **High Availability**: Built-in replication and fault tolerance ensure data availability even if some nodes fail.
+- **Developer-Friendly**: Data models often align naturally with programming languages (JSON documents match object structures).
+- **Cost-Effective**: Can run on commodity hardware and distribute load across multiple servers efficiently.
+- **Variety of Models**: Different types serve different needs, choose the model that best fits your use case.
 
 ## Querying NoSQL Databases
 Query methods vary by NoSQL type, but here are common approaches:
