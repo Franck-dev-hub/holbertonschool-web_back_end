@@ -11,3 +11,5 @@
 
 # Specifically ignore files
 *main*.py
+NoSQL/dump/
+NoSQL/dump.zip
