@@ -1,77 +1,40 @@
-# Python - Async Comprehension
-## Project Description
-This project explores asynchronous generators and asynchronous comprehensions in Python. It demonstrates how to work with asynchronous iteration patterns, collect data from async generators using comprehensions, and measure the runtime of parallel asynchronous operations.
+# Asynchronous Generators and Type Annotations in Python
+## How to Write an Asynchronous Generator
+An asynchronous generator is a function that uses `async def` and contains `await` expressions along with `yield` statements.
+It allows you to produce values asynchronously, pausing execution and resuming later.
 
-## Learning Objectives
-- Understand and implement asynchronous generators using `async def` and `yield`
-- Learn how to use asynchronous comprehensions with the `async for` syntax
-- Collect data from async generators efficiently using async comprehensions
-- Execute multiple async operations in parallel using `asyncio.gather`
-- Type-annotate generators and async comprehensions properly
-- Measure and understand the runtime characteristics of concurrent async operations
-
-## Files
-- **0-async_generator.py**: Async generator that yields random numbers with delays
-- **1-async_comprehension.py**: Async comprehension that collects values from an async generator
-- **2-measure_runtime.py**: Measures runtime of four parallel async comprehensions
-
-## Requirements
-- Python 3.9 on Ubuntu 20.04 LTS
-- All files must be executable
-- Code must pass pycodestyle (2.5.x) validation
-- All functions and coroutines must have type annotations
-- All modules and functions must have proper documentation
-
-## Usage
-Run the main test files to see the functionality in action:
-```bash
-./0-main.py
-./1-main.py
-./2-main.py
-```
-
-## Key Concepts
-### Async Generators
-Functions defined with `async def` that use `yield` to produce values asynchronously. They can pause execution and resume later, allowing for asynchronous iteration.
+**Basic Syntax:**
 ```python
-async def async_generator():
-    for i in range(10):
-        await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+async def async_generator_name():
+    # yield statements with async operations
+    yield value
 ```
 
-### Async Comprehensions
-Comprehensions that work with async generators using the `async for` syntax. They collect values from asynchronous iterables efficiently.
-```python
-[x async for x in async_generator()]
-```
+**Key Points:**
+- Use `async def` to define the generator function
+- Use `await` to pause execution for async operations
+- Use `yield` to produce values
+- Iterate with `async for` loop
+- Returns an async generator object that produces values asynchronously
 
-### Parallel Execution
-Using `asyncio.gather()` to execute multiple async operations concurrently. When four 10-second operations run in parallel, the total time is still approximately 10 seconds (not 40), because they execute simultaneously.
+## How to Use Async Comprehensions
+Async comprehensions allow you to create lists, sets, dictionaries, and generators using `async for` and `await` expressions in a concise, readable way.
 
-### Type Annotations for Generators
-Generators and async generators use `Generator` or `AsyncGenerator` from the `typing` module:
-```python
-from typing import AsyncGenerator
+**Key Points:**
+- Use `async for` in comprehensions to iterate over async iterables
+- Use `await` to get results from async operations
+- Syntax: `[expression async for item in async_iterable if condition]`
+- Works with lists, sets, dicts, and generator expressions
+- More concise and readable than traditional loops
 
-async def async_gen() -> AsyncGenerator[float, None]:
-    # yields floats, doesn't send values back
-    yield 1.0
-```
+## How to Type-Annotate Generators
+Type annotations for generators use the `Generator` type from the `typing` module, or `AsyncGenerator` for async generators.
 
-## Project Structure
-```
-python_async_comprehension/
-├── 0-async_generator.py
-├── 0-main.py
-├── 1-async_comprehension.py
-├── 1-main.py
-├── 2-measure_runtime.py
-├── 2-main.py
-└── README.md
-```
-
-## Notes
-- Async comprehensions are a more readable way to filter and collect data from async generators
-- Parallel execution with `asyncio.gather()` reduces total runtime compared to sequential execution
-- Proper type annotations help with code clarity and IDE support
+**Key Points:**
+- Use `Generator[YieldType, SendType, ReturnType]` for sync generators
+- Use `AsyncGenerator[YieldType, SendType]` for async generators
+- Use `Iterator[T]` as shorthand when only caring about yielded values
+- First parameter is what the generator yields
+- Second parameter is what can be sent to the generator via `.send()`
+- Third parameter (sync only) is the return type
+- Always annotate function parameters and return types for clarity
