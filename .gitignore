@@ -10,6 +10,7 @@
 !NoSQL/*
 
 # Specifically ignore files
+.idea/
 *main*.py
 NoSQL/dump/
 NoSQL/dump.zip
