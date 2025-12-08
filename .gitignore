@@ -1,7 +1,7 @@
-# Ignore all
+# --- Ignore all ---
 *
 
-# Un-ignore
+# --- Un-ignore ---
 !*/
 !*.py
 !*.js
@@ -9,12 +9,16 @@
 !README.md
 !NoSQL/*
 
-# Specifically ignore files
+# --- Specifically ignore files ---
+# IDE
 .idea/
+# Python
 *main*.py
+# SQL
 NoSQL/dump/
 NoSQL/dump.zip
-ES6_basic/.eslintrc.js
-ES6_basic/babel.config.js
-ES6_basic/node_modules/
-ES6_basic/*main.js
+# JS
+*main*.js
+.eslintrc.js
+babel.config.js
+node_modules/
