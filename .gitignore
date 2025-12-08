@@ -13,3 +13,7 @@
 *main*.py
 NoSQL/dump/
 NoSQL/dump.zip
+ES6_basic/.eslintrc.js
+ES6_basic/babel.config.js
+ES6_basic/node_modules/
+ES6_basic/*main.js
