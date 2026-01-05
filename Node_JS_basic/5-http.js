@@ -5,11 +5,12 @@ const port = 1245;
 
 const app = http.createServer((request, response) => {
   const file = process.argv[2];
+  const { url } = request;
+  response.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  response.writeHead(200, { 'Content-type': 'text/plain' });
-  if (request.url === '/') {
+  if (url === '/') {
     response.end('Hello Holberton School!');
-  } else if (response.url === '/students') {
+  } else if (url === '/students') {
     countStudents(file)
       .then((data) => response.end(`This is the list of our students\n${data}`))
       .catch((err) => response.end(`This is the list of our students\n${err.message}`));
