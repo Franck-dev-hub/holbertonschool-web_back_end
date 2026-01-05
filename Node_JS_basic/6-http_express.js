@@ -1,6 +1,7 @@
 const express = require('express');
+
 const app = express();
-const PORT = 1245;
+const port = 1245;
 
 // Basic route to test the server
 app.get('/', (req, res) => {
@@ -8,8 +9,8 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-module.export = app;
+module.exports = app;
