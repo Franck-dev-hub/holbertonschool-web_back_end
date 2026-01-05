@@ -5,19 +5,21 @@ function countStudents(path) {
     const data = fs.readFileSync(path, 'utf-8');
     const lines = data.split('\n');
 
-    // Remove header to count students
     const fields = {};
     let total = 0;
 
     for (let i = 1; i < lines.length; i += 1) {
       const line = lines[i].trim();
-      const [firstname, , , field] = line.split(',');
-      if (!fields[field]) {
-        fields[field] = [];
+      if (line.length > 0) {
+        const [firstname, , , field] = line.split(',');
+        if (!fields[field]) {
+          fields[field] = [];
+        }
+        fields[field].push(firstname);
+        total += 1;
       }
-      fields[field].push(firstname);
-      total += 1;
     }
+
     console.log(`Number of students: ${total}`);
 
     // Log by field
