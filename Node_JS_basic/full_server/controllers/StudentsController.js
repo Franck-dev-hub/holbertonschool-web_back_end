@@ -1,19 +1,19 @@
 import readDatabase from '../utils';
 
 class StudentsController {
-  static function getAllStudents(request, response) {
-    readDatabase(process.Argv[2])
+  static getAllStudents(req, res) {
+    readDatabase(process.argv[2])
       .then((data) => {
-        let result = 'This is the lsit of students';
+        let result = 'This is the list of our students';
         for (const [key] of Object.entries(data).sort()) {
           result += `\nNumber of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}`;
         }
-        response.status(200).send(result);
+        res.status(200).send(result);
       })
-    .catch(() => response.status(500).send('Cannot load the database'));
+      .catch(() => res.status(500).send('Cannot load the database'));
   }
 
-  static getAllStudentsByMajor() {
+  static getAllStudentsByMajor(req, res) {
     readDatabase(process.argv[2])
       .then((data) => {
         if (Object.keys(data).includes(req.params.major)) {
@@ -26,3 +26,5 @@ class StudentsController {
       .catch(() => res.status(500).send('Cannot load the database'));
   }
 }
+
+export default StudentsController;
