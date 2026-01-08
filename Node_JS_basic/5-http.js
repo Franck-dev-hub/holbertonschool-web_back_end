@@ -16,7 +16,7 @@ const app = http.createServer((request, response) => {
 });
 
 app.listen(1245, 'localhost', () => {
-  console.log(`Server running at http://localhost:1245/`);
+  console.log('Server running at http://localhost:1245/');
 });
 
 module.exports = app;
